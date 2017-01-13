@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var User = require('../../app/models/user');
 var jwt = require('jsonwebtoken');
 var apiRouter = express.Router();
-
+var path = require('path');
 var superSecret = 'techofespollpage';
  app.use(bodyParser.json());
 app.use(function(req, res, next) {
@@ -18,12 +18,21 @@ app.use(function(req, res, next) {
    Authorization');
    next();
  });
+ ;
+
  app.use(morgan('dev'));
 
-mongoose.createConnection('mongodb://localhost:27017/users');
 
 
+ /*apiRouter.route('/')
+
+  .get(function(req, res) {
+    console.log('hi');
+  res.sendFile(path.join(__dirname + '../../../client/index.html'));
+ })
+*/
 apiRouter.route('/authenticate')
+
 
 .post(function(req,res) {
   User.findOne({
@@ -64,7 +73,7 @@ if(!validPassword) {
 
 })
 
-apiRouter.use(function(req,res,next) {
+/*apiRouter.use(function(req,res,next) {
 
 console.log('request');
 
@@ -100,7 +109,7 @@ console.log('request');
 //express-jwt
 //passportjs
 
-
+*/
 
 
  apiRouter.route('/users')
