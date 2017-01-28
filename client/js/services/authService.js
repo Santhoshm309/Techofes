@@ -38,8 +38,8 @@
                     token: ''
                 };*/
                     
-               return $http.post('/techofes/authenticate',{username:data.username , password:data.password})
-                    .then(function(params) {
+               return $http.post('/techofes/authenticate',data)
+                    .then(function(data) {
                       AuthToken.setToken(data.token);
                         return data;
 
