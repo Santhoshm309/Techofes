@@ -1,6 +1,12 @@
 (function() {
     'use strict';
 
+    var abacus = angular.module('myApp', [
+      'authService',
+      'ui.router'
+
+    ]);
+
     var states = [
         {
             name: 'actor',
@@ -25,15 +31,24 @@
                     visible: false
                 }
             }
+        },
+        {
+            name: 'signin',
+            state:
+            {
+                url:'/login',
+                templateUrl: 'pages/login.html',
+                data: {
+                    text: "actress",
+                    visible: false
+                },
+
+            }
         }
+
     ];
 
-    var abacus = angular.module('myApp', [
-        'ui.router',
-        'authService',
-        'userService',
-        'main'
-    ]);
+
     /*.run(
      function($location) {
      $location.path('');
@@ -45,28 +60,30 @@
         angular.forEach(states, function (state) {
             $stateProvider.state(state.name, state.state);
         });
-        $locationProvider.html5Mode(true);
-    });
+    })
 
-    abacus.controller('myCtrl', function() {
-        var ctrl=this;
+  /*  .controller('myCtrl', function() {
 
 
-        ctrl.change=function () {
-
-            ctrl.name= "Sign In";
+      var ctrl=this;
 
 
-        };
+      ctrl.change=function () {
 
-        ctrl.changeback=function (who) {
-
-
-            ctrl.name=who;
+          ctrl.name= "Sign In";
 
 
-        };
+      };
 
-    });
+      ctrl.changeback=function (who) {
 
+
+          ctrl.name=who;
+
+    };
+
+
+  });
+
+*/
 })();

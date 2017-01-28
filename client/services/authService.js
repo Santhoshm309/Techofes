@@ -1,8 +1,7 @@
-(function() {
 
 angular
 
-.module('authService',[])
+.module('myApp',[])
 .factory('AuthToken', function($window) {
 
 var authTokenFactory = {};
@@ -68,7 +67,7 @@ return authFactory;
 })
 
 
-.factory('AuthInterceptor', fucntion ($q, $location ,AuthToken) {
+.factory('AuthInterceptor', function ($q, $location ,AuthToken) {
 
 
   var interceptorFactory = {};
@@ -99,6 +98,3 @@ return config;
    return interceptorFactory;
 
 });
-
-
-}();
