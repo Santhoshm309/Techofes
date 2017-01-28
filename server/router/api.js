@@ -1,15 +1,19 @@
 (function() {
 
+    'use strict';
+    
     var express = require('express');
     var app = express();
     var morgan = require('morgan');
     var mongoose = require('mongoose');
     var bodyParser = require('body-parser');
+    
     var User = require('../../app/models/user');
     var jwt = require('jsonwebtoken');
     var apiRouter = express.Router();
     var path = require('path');
     var superSecret = 'techofespollpage';
+  //  app.use(express.bodyParser());
     app.use(bodyParser.json());
     app.use(function(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -26,13 +30,13 @@
 
     apiRouter.route('/authenticate')
     
-        
+    
 
         .post(function(req, res) {
-                console.log(req.body.username);
+                console.log(req.body);
             User.findOne({
 
-                username: req.body.username
+                username: req.query.username
             }).select('name username password').exec(function(err, user) {
 
                 if (err) throw err;
@@ -44,14 +48,14 @@
                     
                 } else if (user) {
 
-                    var validPassword = user.comparePassword(req.body.password);
+                    var validPassword = user.comparePassword(req.query.password);
                     if (!validPassword) {
                         res.json({
                             success: false,
                             message: 'wrong pass'
                         });
                     } else {
-                        console.log('Hello');
+                       // console.log('Hello');
                         var token = jwt.sign({
                             name: user.name,
                             username: user.username

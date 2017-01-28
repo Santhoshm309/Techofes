@@ -3,7 +3,8 @@
 
     var abacus = angular.module('myApp', [
       'authService',
-      'ui.router'
+      'ui.router',
+        'ngCookies'
 
     ]);
 

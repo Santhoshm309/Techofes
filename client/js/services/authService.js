@@ -26,35 +26,25 @@
 
 
 
-        .factory('Auth', function($http, $q, AuthToken) {
+        .factory('Auth', function($http, $q, AuthToken,$state) {
 
             var authFactory = {};
 
-            authFactory.login = function(loginData) {
+            authFactory.login = function(data) {
 
                /* var data = {
                     username: p_username,
                     password: p_password,
                     token: ''
                 };*/
-
-               /*return $http.post('/techofes/authenticate',data)
-                    .then(function(data) {
-                        AuthToken.setToken(data.token);
+                    
+               return $http.post('/techofes/authenticate',{username:data.username , password:data.password})
+                    .then(function(params) {
+                      AuthToken.setToken(data.token);
                         return data;
 
-                    });*/
-                $http({
-                    
-                    url : "localhost:8080/techofes/authenticate",
-                    method : "POST",
-                    data : loginData
-                    
-                }).then(function(loginData) {
-                    
-                    AuthToken.setToken(loginData.token);
-                    return data;
-                });
+                    });
+            
             };
 
             authFactory.logout = function() {

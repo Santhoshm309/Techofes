@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-cookies": "^1.6.1",
     "autoloader": "^2.1.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",

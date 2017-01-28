@@ -1,14 +1,10 @@
-
-
-
-
 <div ng-controller = "mainController as main">
   <form ng-submit = "main.doLogin()">
 
   <div class='login'>
     <h2>Sign in</h2>
-    <input name='username' ng-model="main.loginData.username" placeholder='Username' type='text'/>
-    <input id='pw' name='password'ng-model='main.loginData.password' placeholder='Password' type='password'/>
+    <input name='username' ng-model="main.username" placeholder='Username' type='text'/>
+    <input id='pw' name='password'ng-model='main.password' placeholder='Password' type='password'/>
     <div class='remember'>
       <input checked='' id='remember' name='remember' type='checkbox'/>
       <label for='remember'></label>Remember me
@@ -20,4 +16,4 @@
 
 </form>
 </div>
-<p>{{main.loginData.username}}</p>
+<!--<p>{{main.loginData.username}}</p>-->

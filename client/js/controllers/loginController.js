@@ -1,5 +1,6 @@
 (function() {
 
+    'use strict';
     angular
         .module('myApp')
         .controller('mainController', mainController);
@@ -20,15 +21,25 @@
 
         main.doLogin = function() {
             
-           
-
+             var login = {
+                //params : {
+                username: main.username,
+                password: main.password
+             
+            }
+            
+            
             //$window.alert('Hi');
             main.isProcessing = true;
             main.error = '';
-            Auth.login(loginData)
-                .then(function(loginData) {
-
-                    $location.path('/user'); // if a user successfully logs in, redirect to users page29 $location.path('/users');
+            Auth.login(login)
+                .then(function(response) {
+                    
+                    if(response.status==200)
+                        console.log("login successful");
+                    else
+                        console.log("login unsucccessful");
+                  //  $location.path('/user'); // if a user successfully logs in, redirect to users page29 $location.path('/users');
                 });
 
         };
